@@ -19,12 +19,6 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message
 
-# Example usage
-try:
-    # Some code that might raise an exception
-    1 / 0
-except Exception as e:
-    raise CustomException(e)
 
 
 

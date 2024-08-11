@@ -1,27 +1,17 @@
-from setuptools import find_packages,setup
-from typing import List
+from setuptools import setup, find_packages
 
-e_dot='-e .'
-def get_requirements(file_path:str)->List[str]:
-    '''
-    this function will return the list of requirement
-    '''
-    requirements=[]
-    with open(file_path)as file_obj: #as temperory obj
-        requirements=file_obj.readlines()
-        requirements=[req.replace("\n","") for req in requirements]
-        
-        if e_dot in requirements:
-            requirements.remove(e_dot)
-
+# Function to load the list of requirements from 'requirements.txt'
+def get_requirements(file_path):
+    with open(file_path, 'r') as file:
+        requirements = file.read().splitlines()
     return requirements
 
+# Setting up the package
 setup(
-name='ML_Project'
-version='0.0.1'
-author='shadh'
-author_email='shadhbnc@gmail.com'
-packages=find_packages(),
-install_requires=get_requirements('requirements.txt')
-
+    name='ML_Project',  
+    version='0.0.1',  # Initial version of your project
+    author='shadh',  
+    author_email='shadhbnc@gmail.com',  
+    packages=find_packages(),  # Automatically find and include all packages
+    install_requires=get_requirements('requirements.txt'),  # List of dependencies
 )
